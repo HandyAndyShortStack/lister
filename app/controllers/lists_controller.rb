@@ -1,4 +1,7 @@
 class ListsController < ApplicationController
+
+  before_filter :find_list, only: [:show, :edit, :update, :delete]
+
 	def index
     @lists = List.all
 	end
@@ -17,5 +20,14 @@ class ListsController < ApplicationController
       redirect_to lists_path
     end
   end
+
+  def show
+  end
+
+  private
+
+    def find_list
+      @list = List.find(params[:id])
+    end
 
 end

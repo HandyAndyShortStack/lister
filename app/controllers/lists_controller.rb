@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
 
-  before_filter :find_list, only: [:show, :edit, :update, :delete]
+  before_filter :find_list, only: [:show, :edit, :update, :destroy]
 
 	def index
     @lists = List.all
@@ -34,6 +34,16 @@ class ListsController < ApplicationController
     else
       flash[:alert] = "there was a problem updating your list"
       render action: "edit"
+    end
+  end
+
+  def destroy
+    if @list.destroy
+      flash[:notice] = "list was deleted"
+      redirect_to lists_path
+    else
+      flash[:alert] = "there was a problem deleting your list"
+      redirect_to @list
     end
   end
 

@@ -1,8 +1,2 @@
 <h2>Create a new list.  NOW!!</h2>
-<%= form_for @list do |f| %>
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-  <%= f.submit %>
-<% end %>
+<%= render "form" %>

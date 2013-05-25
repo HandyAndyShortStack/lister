@@ -24,6 +24,19 @@ class ListsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @list.update_attributes(params[:list])
+      flash[:notice] = "list has been updated"
+      redirect_to @list
+    else
+      flash[:alert] = "there was a problem updating your list"
+      render action: "edit"
+    end
+  end
+
   private
 
     def find_list

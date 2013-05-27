@@ -1,1 +1,0 @@
-alias br="bin/rspec"
